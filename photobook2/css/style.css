@@ -1,0 +1,256 @@
+/* 
+コンテンツ幅  メインビジュアルが1000px、中のコンテンツが800pxです。
+INDEX  グレー背景にして枠線を引きます。
+画像  2列の横並びに配置します。
+DETAIL  出版情報とテキストを横並びに配置します。
+        間に罫線を引きます。
+レスポンシブ   
+    ブレークポイントは1024pxです。
+    画像エリアの4枚の画像は1列で縦に並べます。
+    DETAILは出版情報とテキストを縦に並べて、間に罫線を引きます。 */
+
+@charset "UTF-8";
+
+*{
+    box-sizing: border-box;
+}
+
+body {
+    color: #333333;/* フォントカラー */   
+}
+
+#outerFrame {
+    max-width: 1000px;
+    margin: 0 auto;
+            /* border: solid 2px yellowgreen; */
+}
+
+#innerFrame {
+    max-width: 800px;
+    margin: 0 auto;
+            /* border: 2px purple dashed; */
+}
+
+/*----------------------------------------------------
+        ヘッダー 
+----------------------------------------------------*/
+header {
+    text-align: left;
+}
+
+#logo {
+    height: 18px;
+    margin: 60px 0 15px;
+    /* text-align: start;     */
+}
+
+/*-----------------------------------------------------
+        メインビジュアル セクション  
+-----------------------------------------------------*/
+#mainvisual {
+    max-width: 1000px;
+    width: 100%
+}
+
+/*-----------------------------------------------------
+        INDEX セクション  
+-----------------------------------------------------*/
+
+h2 {
+    text-align: center;
+    padding-top: 65px;
+    padding-bottom: 35px;
+}
+
+#index {
+            /* border: dotted 2px red; */
+    margin: 60px auto;
+    background-color: #F5F5F5;
+    padding-bottom: 60px;
+}
+
+        #indexContent {
+            border: solid 1px black;
+            padding: 30px 120px;
+            /* line-height: 3; */
+
+            /*
+            「display: table;」と「margin: 0 auto;」で中央に配置。
+            ※この方法を使うとテキストの長さに応じて可変で中央配置できる
+            */
+            display: table;
+            margin: 0 auto;
+        }
+
+        li { 
+            margin-bottom: 25px;
+            /* list-style: none; */
+         }
+         li:last-child {
+            margin-bottom: 0;
+         }
+
+
+/*-----------------------------------------------------
+        画像 セクション  
+-----------------------------------------------------*/
+#galley {
+            /* border: solid 1px orange; */
+    display: inline-block;
+    margin: 0 auto;
+    text-align: center;
+}
+
+    .photo {
+        max-width: 392px;
+        /* max-width: 48%; */
+    }
+
+    #galley img:nth-of-type(2n-1) {
+                /* border: dashed 1px crimson; */
+        margin-right: 6px;
+        /* margin-right: 2%; */
+        margin-bottom: 15px;
+    }
+
+    #galley img:nth-of-type(2n) {
+                /* border: dashed 1px blue; */
+        margin: 0 0 15px;
+    }
+
+/*-----------------------------------------------------
+        DETAIL セクション  
+-----------------------------------------------------*/
+#detail {
+    background-color: #F5F5F5;
+    margin-top: 60px;
+    padding: 0 60px 65px;
+}
+
+    #detailContent {
+       display: flex;
+       font-size: 14px;
+       align-content: space-between;
+               
+               /* border: solid 2px orange; */
+    }
+
+    #detailContent p {
+        margin-bottom: 5px;
+    }
+    #detailContent p:last-child {
+        margin-bottom: 0;
+    }
+
+        #leftContent {
+                    /* border: dotted 2px crimson; */
+            width: 35%;
+            padding-right: 40px;
+        }
+
+        #rightContent {
+                    /* border: dotted 2px green; */
+            width: 65%;
+            padding-left: 40px;
+            border-left: solid 1px #333333;
+        }
+
+        #rightContent p {
+            margin-bottom: 20px;
+        }
+
+    #rightContent a {
+        text-decoration: none;
+        color: #333333;
+        border-bottom: solid 1px #333333;
+        margin-bottom: 0;
+    }
+
+/*----------------------------------------------------
+        フッター 
+----------------------------------------------------*/
+footer {
+    text-align: center;
+    font-size: 10px;
+    margin: 78px auto 17px;
+}
+
+/*--------------------------------------------------------------------
+        SP用デザイン
+----------------------------------------------------------------------*/
+@media screen and (max-width: 1024px) {
+
+    #innerFrame {
+        max-width: 90%;
+        /* margin: 0 auto; */
+    }
+
+    h2 {
+        padding-top: 45px;
+    }
+
+    #index {
+        margin: 60px auto;
+        padding:0 5% 40px;
+    }
+
+    #indexContent {
+        padding: 25px 60px ;
+        margin: 0 auto;
+    }
+
+    .photo {
+        max-width: 100%;
+    }
+
+    #galley img:nth-of-type(2n-1) {
+        margin-right: 0%;
+        margin-bottom: 15px;
+    }
+
+    #galley img:nth-of-type(2n) {
+        margin: 0 0 15px;
+    }
+
+    #detail {
+        margin-top: 40px;
+        padding: 0 5% 40px;
+    }
+    
+    #detailContent {
+        display: block;
+    } 
+    
+    #detailContent p {
+        margin-bottom: 17px;
+    }
+    #detailContent p:last-child {
+        margin-bottom: 0;
+    }
+
+
+    #leftContent {
+        /* border: dotted 2px crimson; */
+        width: 100%;
+        padding: 0 0% 45px;
+    }
+
+    #rightContent {
+        /* border: dotted 2px green; */
+        width: 100%;
+        padding: 0;
+        border-left: none;
+    }
+
+    #rightContent p:first-child {
+        border-top: solid 1px #333333;
+        padding-top:45px;
+    }
+
+    #rightContent p {
+        margin-bottom: 24px;
+    }
+    #rightlContent p:last-child {
+        margin-bottom: 0;
+    }
+}
